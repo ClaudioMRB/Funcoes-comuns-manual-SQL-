@@ -1,13 +1,17 @@
 # Fun-es-comuns-manual-SQL-
 UPPER, LOWER, CAST, ROUND, DAY, MONTH, YEAR, EXTRACT, CONCAT, CASE, REPLACE, CHAR_LENGTH E MD5
 
-[MySQL UPPER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_upper.asp)	
+[MySQL UPPER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_upper.asp) 			[MySQL MONTH() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_month.asp)
 
-[MySQL LOWER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_lower.asp)
+[MySQL LOWER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_lower.asp) 		[MySQL YEAR() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_year.asp)
 
-[MySQL CAST() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_cast.asp)
+[MySQL CAST() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_cast.asp) 	        [MySQL EXTRACT() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_extract.asp)
 
 [MySQL ROUND() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_round.asp)
+
+[MySQL DAY() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_day.asp)
+
+
 
 # ------------------Função MySQL UPPER()--------------
 
@@ -249,3 +253,289 @@ Rodada da coluna Preço (para 1 decimal) na tabela "Produtos":
 
 SELECT ProductName, Price, ROUND(Price, 1) AS RoundedPrice
 FROM Products;
+
+
+
+# --------------Função MySQL DAY ()---------------------
+
+### Exemplo
+
+Retorne o dia do mês para uma data:
+
+SELECT DAY("2017-06-15");
+
+
+
+**EXEMPLO 2**
+
+extrair o dia da data registrada.
+
+**SELECT** id, date, price,**CAST** ( **EXTRACT** (**DAY FROM** date) **AS** int) **AS** novo_nome_da_coluna **FROM** tb_sale;
+
+**CAST**(Parâmetro), numeric_types)
+
+------
+
+## Definição e Uso
+
+A função DAY() retorna o dia do mês para uma determinada data (número de 1 a 31).
+
+**Nota:** Esta função é igual à função [DAYOFMONTH().](https://www.w3schools.com/sql/func_mysql_dayofmonth.asp)
+
+## Sintaxe
+
+DAY(*date*)
+
+## Valores dos parâmetros
+
+| Parameter | Description                                |
+| :-------- | :----------------------------------------- |
+| *date*    | Required. The date to extract the day from |
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Retorne o dia do mês para uma data:
+
+SELECT DAY("2017-06-15 09:34:21");
+
+### Exemplo
+
+Retorne o dia do mês para a data atual do sistema:
+
+SELECT DAY(CURDATE());
+
+
+
+# -----------------Função MySQL MONTH ()------------
+
+### Exemplo
+
+Devolva a parte do mês de uma data:
+
+SELECT MONTH("2017-06-15");
+
+
+
+**EXEMPLO 2**
+
+extrair o mês da data registrada.
+
+**SELECT** id, date, price,**CAST** ( **EXTRACT** (**MONTH FROM** date) **AS** int) **AS** novo_nome_da_coluna **FROM** tb_sale;
+
+**CAST**(Parâmetro), numeric_types)
+
+------
+
+## Definição e Uso
+
+A função MONTH() retorna a parte do mês para uma determinada data (número de 1 a 12).
+
+## Sintaxe
+
+MONTH(*date*)
+
+## Valores dos parâmetros
+
+| Parameter | Description                                              |
+| :-------- | :------------------------------------------------------- |
+| *date*    | Required. The date or datetime to extract the month from |
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Devolva a parte do mês de uma data:
+
+SELECT MONTH("2017-06-15 09:34:21");
+
+### Exemplo
+
+Devolva a parte do mês da data atual do sistema:
+
+SELECT MONTH(CURDATE());
+
+
+
+# -------------Função MySQL YEAR()---------------------
+
+### Exemplo
+
+Devolva a parte do ano de uma data:
+
+SELECT YEAR("2017-06-15");
+
+
+
+**EXEMPLO 2**
+
+extrair o ano da data registrada.
+
+**SELECT** id, date, price,**CAST** ( **EXTRACT** (**YEAR FROM** date) **AS** int) **AS** novo_nome_da_coluna **FROM** tb_sale;
+
+**CAST**(Parâmetro), numeric_types)
+
+------
+
+## Definição e Uso
+
+A função year() retorna a parte do ano para uma determinada data (número de 1000 a 9999).
+
+## Sintaxe
+
+YEAR(*date*)
+
+## Valores dos parâmetros
+
+| Parameter | Description                                          |
+| :-------- | :--------------------------------------------------- |
+| *date*    | Required. The date/datetime to extract the year from |
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Devolva a parte do ano de uma data:
+
+SELECT YEAR("2017-06-15 09:34:21");
+
+### Exemplo
+
+Retorne a parte do ano da data atual do sistema:
+
+SELECT YEAR(CURDATE());
+
+
+
+# ---------------Função mysql extract()-----------------
+
+### Exemplo
+
+Extrair o mês de uma data:
+
+SELECT EXTRACT(MONTH FROM "2017-06-15");
+
+
+
+**EXEMPLO 2**
+
+vai exibir apenas os registros onde o dia do ano seja igual a 18.
+
+**SELECT** id, date, price,**CAST** ( **EXTRACT** (**DAY FROM** date) **AS** int) **AS** novo_nome_da_coluna **FROM** tb_sale **WHERE EXTRACT** ( **DAY FROM** date ) = 18 ;
+
+**SELECT** id, date, price,**CAST** ( **EXTRACT** (**DAY FROM** date) **AS** int) **AS** novo_nome_da_coluna **FROM** tb_sale **WHERE EXTRACT** ( **YEAR FROM** date ) = 2022 **AND EXTRACT** ( **MONTH FROM** date ) = 5 ;
+
+
+
+**CAST**(Parâmetro), numeric_types)
+
+------
+
+## Definição e Uso
+
+A função EXTRA() extrai uma parte de uma determinada data.
+
+## Sintaxe
+
+EXTRACT(*part* FROM *date*)
+
+## Valores dos parâmetros
+
+| Parameter | Description                                                 |
+| :-------- | :---------------------------------------------------------- |
+| *part*    | Required. The part to extract. Can be one of the following: |
+
+-  MICROSECOND
+
+- SECOND
+
+- MINUTE
+
+- HOUR
+
+- DAY
+
+- WEEK
+
+- MONTH
+
+- QUARTER
+
+- YEAR
+
+- SECOND_MICROSECOND
+
+- MINUTE_MICROSECOND
+
+- MINUTE_SECOND
+
+- HOUR_MICROSECOND
+
+- HOUR_SECOND
+
+- HOUR_MINUTE
+
+- DAY_MICROSECOND
+
+- DAY_SECOND
+
+- DAY_MINUTE
+
+- DAY_HOUR
+
+- YEAR_MONTH
+
+  
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Extrair a semana de uma data:
+
+SELECT EXTRACT(WEEK FROM "2017-06-15");
+
+### Exemplo
+
+Extrair o minuto de um horário de encontro:
+
+SELECT EXTRACT(MINUTE FROM "2017-06-15 09:34:21");
+
+### Exemplo
+
+Extrair o ano e o mês de uma data:
+
+SELECT EXTRACT(YEAR_MONTH FROM "2017-06-15 09:34:21");
