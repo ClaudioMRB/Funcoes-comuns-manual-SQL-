@@ -1,17 +1,17 @@
 # Fun-es-comuns-manual-SQL-
 UPPER, LOWER, CAST, ROUND, DAY, MONTH, YEAR, EXTRACT, CONCAT, CASE, REPLACE, CHAR_LENGTH E MD5
 
-[MySQL UPPER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_upper.asp) 			[MySQL MONTH() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_month.asp)
+[MySQL UPPER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_upper.asp) 	    	[MySQL MONTH() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_month.asp)
 
-[MySQL LOWER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_lower.asp) 		[MySQL YEAR() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_year.asp)
+[MySQL LOWER() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_lower.asp) 	    	[MySQL YEAR() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_year.asp)
 
-[MySQL CAST() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_cast.asp) 	        [MySQL EXTRACT() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_extract.asp)
+[MySQL CAST() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_cast.asp) 	            [MySQL EXTRACT() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_extract.asp)
 
-[MySQL ROUND() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_round.asp)       [SQL CASE Expression (w3schools.com)](https://www.w3schools.com/sql/sql_case.asp)
+[MySQL ROUND() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_round.asp)             [SQL CASE Expression (w3schools.com)](https://www.w3schools.com/sql/sql_case.asp)
 
-[MySQL DAY() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_day.asp)
+[MySQL DAY() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_day.asp)                    [MySQL REPLACE() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_replace.asp)
 
-
+[Função MySQL CHAR_LENGTH() (w3schools.com)](https://www.w3schools.com/sql/func_mysql_char_length.asp)
 
 # ------------------Função MySQL UPPER()--------------
 
@@ -761,3 +761,171 @@ SELECT REPLACE("XYZ FGH XYZ", "X", "m");
 Substitua "x" por "m":
 
 SELECT REPLACE("XYZ FGH XYZ", "x", "m");
+
+
+
+# -------------Função MySQL CHAR_LENGTH()-------
+
+
+
+### Exemplo
+
+Retorne o comprimento da sequência:
+
+SELECT CHAR_LENGTH("SQL Tutorial") AS LengthOfString;
+
+------
+
+## Definição e Uso
+
+A função CHAR_LENGTH() retorna o comprimento de uma string (em caracteres).
+
+**Nota:** Esta função é igual à função [CHARACTER_LENGTH().](https://www.w3schools.com/sql/func_mysql_character_length.asp)
+
+## Sintaxe
+
+CHAR_LENGTH(*string*)
+
+## Valores dos parâmetros
+
+| Parameter | Description                                  |
+| :-------- | :------------------------------------------- |
+| *string*  | Required. The string to count the length for |
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Retorne o comprimento do texto na coluna "CustomerName":
+
+**SELECT CHAR_LENGTH**(CustomerName) **AS** LengthOfName
+**FROM** Customers;
+
+**SELECT** id, name, **CHAR_LENGTH**(name) **FROM** tb_seller
+
+
+
+# ------------------------SQL MD5()---------------------------
+
+Em SQL, a função MD5() é usada para criptografar uma sequência de caracteres em um inteiro hexadecimal de 32 caracteres. Esta sequência de retorno pode ser particularmente útil para ser usada como uma chave hash.
+
+**Nota:** a função MD5() usa o algoritmo RSA (ver "RSA Data Security, Inc. MD5 Message-Digest Algorithm").
+
+## Sintaxe
+
+A função é usada em uma consulta SQL da seguinte forma:
+
+```
+SELECT MD5('test');
+```
+
+Tal consulta retornará a seguinte sequência:
+
+```
+098f6bcd4621d373cade4e832627b4f6
+```
+
+Este exemplo concreto mostra o valor do uso do MD5() para criar uma chave hash.
+
+## Exemplo
+
+Para entender como essa função funciona, veremos alguns exemplos possíveis de cenários onde a função será útil. Esses **exemplos são puramente fictícios** e não representam uma maneira de proceder para garantir uma aplicação. Por exemplo, existem lojas de dados que podem potencialmente encontrar uma string da cifra MD5(). Portanto, **essa função não é uma função de criptografia segura para armazenar senhas "de forma limpa".**
+
+### Crie uma chave para um usuário
+
+Vamos imaginar um aplicativo que tenha contas de usuário. Ao se registrar, o usuário deve validar seu endereço de e-mail clicando em um link que se parece com este:
+
+```
+http://www.example.com/valider-email.php?utilisateur=345
+```
+
+Usar esse método é perigoso porque qualquer pessoa pode apenas alterar o ID manualmente para validar contas de usuário. Ou seja, com um nível tão baixo de segurança, você pode facilmente tentar todas as combinações possíveis substituindo o "345" da URL para validar contas que não são suas.
+
+Para melhorar um pouco a segurança, é possível gerar uma chave hash para cada usuário e validar o endereço de e-mail somente se a URL VISITADA contiver os seguintes 2 parâmetros: o identificador e a chave **hash correta** (ou seja, a chave hash que corresponde ao identificador).
+
+```
+http://www.example.com/valider-email.php?utilisateur=345&hashage=098f6bcd4621d373cade4e832627b4f6
+```
+
+Dessa forma, pessoas mal-intencionadas não serão capazes de executar tarefas críticas em contas que não se encaixam nelas.
+
+Gerar uma chave hash única é relativamente simples. É possível, por exemplo, usar como tecla de entrada uma combinação do identificador + a data + a hora + qualquer palavra. Assim, será muito complicado para um hacker tentar encontrar a combinação certa para validar um e-mail. Aqui está o exemplo concreto:
+
+```
+UPDATE utilisateur
+SET hashage = MD5('345_2013-10-04 22:16:45_moutarde')
+WHERE id = 345
+```
+
+Esta consulta adicionará uma chave hash ao usuário com ID 345.
+
+### Atualize uma senha para MD5
+
+Apenas para os propósitos deste tutorial, consideraremos que uma senha de um aplicativo é armazenada usando a função MD5(). Nessas circunstâncias, é possível atualizar uma senha usando uma consulta SQL semelhante à consulta abaixo:
+
+```
+UPDATE utilisateur
+SET password = MD5('nouveau_mot_de_passe')
+WHERE id = 39;
+```
+
+**Lembrete:** tal método não se protege bem de ataques de computador.
+
+### Verifique o nome de usuário e a senha de um usuário
+
+Este novo exemplo novamente usa o exemplo onde a senha é salva através da função MD5(). Se o usuário desejar fazer login usando seu login e senha, o aplicativo poderá verificar a combinação correta usando a consulta abaixo:
+
+```
+SELECT id
+FROM utilisateur
+WHERE login = 'alphonse' AND password = MD5('secret');
+```
+
+O resultado desta consulta é simples:
+
+- Se essa solicitação retornar um identificador, será o nome de usuário do usuário que tiver a combinação correta de login e senha
+- Se a consulta não retornar nenhum resultado, significa que o login ou senha não corresponde a nenhuma combinação existente na tabela de usuário
+
+### Melhore um pouco a segurança com um prefixo e/ou sufixo
+
+Como explicado, os exemplos apresentados acima são puramente fictícios e não são recomendados para uma aplicação segura. Existem lojas de dados que permitem que você procure uma chave em potencial a partir de seu hash MD5. Para armazenar uma senha é preferível usar a função [SHA1().](https://sql.sh/fonctions/sha1)
+
+No entanto, ainda é possível usar a função MD() combinando um prefixo e sufixo com a chave de entrada usada pela função. Isso torna a criptografia um pouco mais complexa para que seja mais difícil adivinhar a chave inicial. O prefixo e o sufixo não devem ser divulgados para manter boa segurança.
+
+Em nosso exemplo, imaginaremos que o prefixo será a corda do personagem "GIRAFA" enquanto o sufixo será "TENNIS".
+
+**Solicitação para atualizar senha:**
+
+```
+UPDATE utilisateur
+SET password = MD5('GIRAFEnouveau_mot_de_passeTENNIS')
+WHERE id = 39;
+```
+
+**Solicitação para verificar login + senha:**
+
+```
+SELECT id
+FROM utilisateur
+WHERE login = 'alphonse' AND password = MD5('GIRAFEsecretTENNIS');
+```
+
+Este método é preferível e melhora um pouco a segurança de um aplicativo.
+
+
+
+**exemplo 1**
+
+SELECT *, MD5(name) FROM tb_seller
+
+**EXEMPLO 2**
+
+SELECT MD5('minhasenha@@')
