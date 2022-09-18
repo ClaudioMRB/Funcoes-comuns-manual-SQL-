@@ -7,7 +7,7 @@ UPPER, LOWER, CAST, ROUND, DAY, MONTH, YEAR, EXTRACT, CONCAT, CASE, REPLACE, CHA
 
 [MySQL CAST() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_cast.asp) 	        [MySQL EXTRACT() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_extract.asp)
 
-[MySQL ROUND() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_round.asp)
+[MySQL ROUND() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_round.asp)       [SQL CASE Expression (w3schools.com)](https://www.w3schools.com/sql/sql_case.asp)
 
 [MySQL DAY() Function (w3schools.com)](https://www.w3schools.com/sql/func_mysql_day.asp)
 
@@ -539,3 +539,225 @@ SELECT EXTRACT(MINUTE FROM "2017-06-15 09:34:21");
 Extrair o ano e o mês de uma data:
 
 SELECT EXTRACT(YEAR_MONTH FROM "2017-06-15 09:34:21");
+
+
+
+# --------------Função MySQL CONCAT()---------------
+
+[❮ Anterior](https://www.w3schools.com/sql/func_mysql_character_length.asp)[funções mysql ❮](https://www.w3schools.com/sql/sql_ref_mysql.asp)[Próxima ❯](https://www.w3schools.com/sql/func_mysql_concat_ws.asp)
+
+### Exemplo
+
+Adicione várias strings juntas:
+
+SELECT CONCAT("SQL ", "Tutorial ", "is ", "fun!") AS ConcatenatedString;
+
+------
+
+## Definição e Uso
+
+A função CONCAT() adiciona duas ou mais expressões juntas.
+
+**Nota:** Veja também a função [CONCAT_WS().](https://www.w3schools.com/sql/func_mysql_concat_ws.asp)
+
+
+
+## Sintaxe
+
+CONCAT(*expression1*, *expression2*, *expression3*,...)
+
+## Valores dos parâmetros
+
+| Parameter                                     | Description                                                  |
+| :-------------------------------------------- | :----------------------------------------------------------- |
+| *expression1, expression2, expression3, etc.* | Required. The expressions to add together.**Note:** If any of the expressions is a NULL value, it returns NULL |
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Adicione três colunas em uma coluna "Endereço":
+
+SELECT CONCAT(Address, " ", PostalCode, " ", City) AS Address
+FROM Customers;
+
+**Exemplo 2**
+
+**SELECT** *, **CONCAT** (**EXTRACT**(**MONTH FROM** date), '/', **EXTRACT**(**YEAR FROM** date)) **AS** mes_ano **FROM** tb_sale
+
+## -----------------A Expressão DE CASE SQL------------------------
+
+A expressão passa por condições e retorna um valor quando a primeira condição é atendida (como uma declaração se-então-então-outra). Assim, uma vez que uma condição é verdadeira, ele vai parar de ler e retornar o resultado. Se nenhuma condição for verdadeira, ele devolve o valor na cláusula. `CASE``ELSE`
+
+Se não houver parte e nenhuma condição for verdadeira, ela retorna NULL.`ELSE`
+
+## Sintaxe case
+
+CASE
+  WHEN *condition1* THEN *result1*
+  WHEN *condition2* THEN *result2*
+  WHEN *conditionN* THEN *resultN*
+  ELSE *result*
+END;
+
+------
+
+## Banco de dados de demonstração
+
+Abaixo está uma seleção da tabela "OrderDetails" no banco de dados de amostras northwind:
+
+| OrderDetailID | OrderID | ProductID | Quantity |
+| :------------ | :------ | :-------- | :------- |
+| 1             | 10248   | 11        | 12       |
+| 2             | 10248   | 42        | 10       |
+| 3             | 10248   | 72        | 5        |
+| 4             | 10249   | 14        | 9        |
+| 5             | 10249   | 51        | 40       |
+
+------
+
+## Exemplos de casos SQL
+
+O SQL a seguir passa por condições e retorna um valor quando a primeira condição é atendida:
+
+### Exemplo
+
+SELECT OrderID, Quantity,
+CASE
+  WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+  WHEN Quantity = 30 THEN 'The quantity is 30'
+  ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+
+[Experimente você mesmo »](https://www.w3schools.com/sql/trymysql.asp?filename=trysql_case)
+
+O SQL seguinte ordenará aos clientes pela City. No entanto, se a cidade é NULL, então peça por País:
+
+### Exemplo
+
+SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+  WHEN City IS NULL THEN Country
+  ELSE City
+END);
+
+**EXEMPLO 2**
+
+**SELECT **
+
+**CASE** 
+
+​         **WHEN** condition_1 **THEN** result_1
+
+​         **WHEN** condition_2 **THEN** result_2  **FROM** tb_sale
+
+​         [**WHEN** ...]
+
+​         [**ELSE** else_result]
+
+**END**
+
+**FROM** tb_sale
+
+
+
+**EXEMPLO 3**
+
+**SELECT **
+
+**CASE** 
+
+​         **WHEN** Preco < 500 **THEN** 'Barato'
+
+​        **ELSE** 'Caro'
+
+**END AS** classificacao
+
+**FROM** tb_sale
+
+
+
+**EXEMPLO 4**
+
+**SELECT ** *,
+
+**CASE** 
+
+​         **WHEN** **EXTRACT**(**MONTH FROM** date) >=10 **THEN** **CONCAT** (**EXTRACT**(**MONTH FROM** date), '/', **EXTRACT**(**YEAR FROM** date))
+
+​        **ELSE** **CONCAT** ( '0', **EXTRACT**(**MONTH FROM** date), '/', **EXTRACT**(**YEAR FROM** date))
+
+**END AS** mes_ano
+
+**FROM** tb_sale
+
+
+
+# --------------MySQL REPLACE() Function------------
+
+
+
+### Exemplo
+
+Substitua "SQL" por "HTML":
+
+SELECT REPLACE("SQL Tutorial", "SQL", "HTML");
+
+------
+
+## Definição e Uso
+
+A função REPLACE() substitui todas as ocorrências de um substring dentro de uma string, por um novo substring.
+
+**Nota:** Esta função executa uma substituição sensível a maiústos.
+
+## Sintaxe
+
+REPLACE(*string*, *from_string*, *new_string*)
+
+## Valores dos parâmetros
+
+| Parameter     | Description                             |
+| :------------ | :-------------------------------------- |
+| *string*      | Required. The original string           |
+| *from_string* | Required. The substring to be replaced  |
+| *new_string*  | Required. The new replacement substring |
+
+## Detalhes técnicos
+
+| Funciona em: | De MySQL 4.0 |
+| :----------- | ------------ |
+|              |              |
+
+------
+
+## Mais exemplos
+
+### Exemplo
+
+Substitua "X" por "M":
+
+SELECT REPLACE("XYZ FGH XYZ", "X", "M");
+
+### Exemplo
+
+Substitua "X" por "m":
+
+SELECT REPLACE("XYZ FGH XYZ", "X", "m");
+
+### Exemplo
+
+Substitua "x" por "m":
+
+SELECT REPLACE("XYZ FGH XYZ", "x", "m");
